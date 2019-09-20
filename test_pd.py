@@ -23,6 +23,10 @@ try:
 except:
     print('Unable to connect :(')
 
+# creates a df off sql query and connection
 df = pd.read_sql_query('SELECT * FROM country', con=conn)
 
-print(df)
+# exports that df to a csv
+df.to_csv(path_or_buf='./test_csv.csv')
+
+# ugh this is easier than I thought it would be lol
