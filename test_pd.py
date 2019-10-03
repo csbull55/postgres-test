@@ -20,13 +20,17 @@ try:
     conn = psycopg2.connect("dbname=dvdrental user=postgres host=localhost password={}".format(auth()))
 
     print('connected')
+
 except:
-    print('Unable to connect :(')
+    pass
 
 # creates a df off sql query and connection
-df = pd.read_sql_query('SELECT * FROM country', con=conn)
+# df = pd.read_sql_query('SELECT * FROM country', con=conn)
+
+# this will read from a file
+df = pd.read_sql((open("./scripts/test.sql", "r").read()), con=conn)
+
+print(df.head())
 
 # exports that df to a csv
-df.to_csv(path_or_buf='./test_csv.csv')
-
-# ugh this is easier than I thought it would be lol
+df.to_csv(path_or_buf='../test_csv.csv')

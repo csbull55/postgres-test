@@ -10,7 +10,6 @@ note that this lib only supports up to python 3.6, so make sure
 to run the scripts using that version
 """
 
-import pandas as pd
 import psycopg2
 from auth import auth
 
@@ -26,8 +25,13 @@ except:
     print('Unable to connect :(')
 
 # executes command, this is a basic test
+# cur.execute("""SELECT * from language""")
+
+# this reads the query from a file
+cur.execute(open("./scripts/test.sql", "r").read())
+
+
 # throws the results of the query into the rows var
-cur.execute("""SELECT * from language""")
 rows = cur.fetchall()
 
 # creates list of rows
