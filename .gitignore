@@ -1,1 +1,2 @@
-auth.py
+tests/auth.py
+__pycache__
